@@ -22,7 +22,7 @@ game_over_image = pygame.image.load("assets/game_over.png")
 start_image = pygame.image.load("assets/start.png")
 
 # Game
-scroll_speed = 1
+scroll_speed = 1.75
 bird_start_position = (100, 250)
 score = 0
 font = pygame.font.SysFont('Segoe', 26)
@@ -49,9 +49,9 @@ class Bird(pygame.sprite.Sprite):
         self.image = bird_images[self.image_index // 10]
 
         # Gravity and Flap
-        self.vel += 0.8
-        if self.vel > 12:
-            self.vel = 12
+        self.vel += 1.0
+        if self.vel > 15:
+            self.vel = 15
         if self.rect.y < 500:
             self.rect.y += int(self.vel)
         if self.vel == 0:
@@ -63,7 +63,7 @@ class Bird(pygame.sprite.Sprite):
         # User Input
         if user_input[pygame.K_SPACE] and not self.flap and self.rect.y > 0 and self.alive:
             self.flap = True
-            self.vel = -10
+            self.vel = -12
 
 
 class Pipe(pygame.sprite.Sprite):
